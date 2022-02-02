@@ -1,12 +1,12 @@
 import './App.css';
-import Navbar from './components/navbar/Navbar';
-import EventRegister from  './screens/eventRegister/EventRegister';
+
+import Dashboard from './components/dashboard/DashBoard';
 
 function App() {
   return (
  <>
-  <Navbar />
-  <EventRegister />
+
+  <Dashboard />
  </>
   );
 }

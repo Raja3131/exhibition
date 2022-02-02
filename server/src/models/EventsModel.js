@@ -7,30 +7,12 @@ const eventSchema = new mongoose.Schema({
     description: {
         type: String,
     },
-    date: {
-        type: Date,
-    },
-    time: {
-        type: String,
-    },
+   
+
     location: {
         type: String,
     },
   
-    createdBy: {
-        type: String,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now,
-    },
-    image: {
-        type: String,
-    },
 
 })
 
