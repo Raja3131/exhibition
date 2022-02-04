@@ -20,6 +20,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems} from './ListItems';
 import { Link,Routes,Route } from 'react-router-dom';
 import EventRegister from './../../screens/eventRegister/EventRegister';
+import ShopRegistration from '../../screens/shops/ShopRegistration'
+import PromoterRegistration from '../../screens/promoters/PromotersRegistration';
 
 
 
@@ -153,7 +155,9 @@ function DashboardContent() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               <Routes>
                   <Route exact path="/" element={<EventRegister/>} />
-                    <Route path="/about" element={<h1>Client</h1>} />
+                    <Route path="/shops" element={<ShopRegistration/>} />
+                    <Route path="/promoters" element={<PromoterRegistration/>} />
+
               </Routes>
            
           </Container>

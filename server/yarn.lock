@@ -1142,6 +1142,11 @@ cors@^2.8.5:
     object-assign "^4"
     vary "^1"
 
+country-state-city-js@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/country-state-city-js/-/country-state-city-js-2.5.0.tgz#90ad907b6e91c0263a47b040a071c0e7eef22f75"
+  integrity sha512-2xGazcwQB16X8dm1W6OV71lxa+IH52jLc9yZt+KcwRxvpDeGKKo54liiu/TcWObnAly5kQf9fSOh55UEjQw78A==
+
 cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"

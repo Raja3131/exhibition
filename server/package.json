@@ -5,10 +5,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start":"nodemon index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "country-state-city-js": "^2.5.0",
     "debug": "^4.3.3",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",

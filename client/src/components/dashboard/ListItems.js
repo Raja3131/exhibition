@@ -12,6 +12,7 @@ import { Link,Routes,Route } from 'react-router-dom';
 import HailIcon from '@mui/icons-material/Hail';
 import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
 
+
 export const mainListItems = (
   <div>
     <ListItem button component={Link} to='/'>
@@ -20,19 +21,19 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem  button  component={Link} to='/about'>
+    <ListItem  button component={Link} to='/promoters' >
       <ListItemIcon>
         <HailIcon  />
       </ListItemIcon>
-      <ListItemText primary="Client" />
+      <ListItemText primary="Promoter" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
+    <ListItem >
+      <ListItemIcon button>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Promoters" />
+      <ListItemText primary="Clients" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to='/shops'>
       <ListItemIcon>
       <StoreMallDirectoryIcon/>
       </ListItemIcon>
