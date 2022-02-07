@@ -27,6 +27,7 @@ export const ShopController = {
     createShop: async (req, res) => {
         try {
             const newShop = await ShopServices.createShop(req.body);
+
             res.json(newShop);
         } catch (err) {
             res.status(500).json({ message: err.message });

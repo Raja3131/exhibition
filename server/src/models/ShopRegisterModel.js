@@ -11,10 +11,7 @@ const shopSchema = new mongoose.Schema({
         type: String,
     },
 
-    promoter:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'PromoterModel'
-    }
+ 
 })
 
 const Shop = mongoose.model('Shop', shopSchema)

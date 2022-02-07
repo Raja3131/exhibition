@@ -7,6 +7,8 @@ import ShopRegisterRoutes from './src/routes/ShopRegisterRoutes.js'
 import EventRegisterRoutes from './src/routes/EventRegisterRoutes.js'
 import LocationRoutes from './src/routes/LocationRoutes.js'
 import PromoterRoutes from './src/routes/PromoterRoutes.js'
+import AuthenticationRouter from './src/routes/AuthenticationRoutes.js'
+import errorHandler from './src/middleware/error.js'
 
 
 const app = express()
@@ -25,3 +27,6 @@ app.use('/shops',ShopRegisterRoutes)
 app.use('/events', EventRegisterRoutes)
 app.use('/locations', LocationRoutes)
 app.use('/promoters', PromoterRoutes)
+app.use('/auth', AuthenticationRouter)
+//error handler middleware should be last in the chain 
+app.use(errorHandler)
