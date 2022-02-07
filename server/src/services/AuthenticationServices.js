@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import crypto from "crypto";
 
 export const AuthenticationServices = {
   registerUser: async (user) => {
@@ -18,4 +19,29 @@ export const AuthenticationServices = {
       throw err;
     }
   },
+forgotPassword: async (email) => {
+  try {
+    const user = await User.findOne({ email: email });
+    return user;
+  } catch (err) {
+    throw err;
+  }
+
+    
+
+},
+  resetPassword: async (password) => {
+    const resetPasswordToken = crypto.createHash("sha256").update(password).digest("hex");
+    try {
+      const user = await User.findOne({ resetPasswordToken: resetPasswordToken, resetPasswordExpire: { $gt: Date.now() } });
+      return user;
+    } catch (err) {
+      throw err;
+    }
+
+
+   
+
+  }
+
 };
