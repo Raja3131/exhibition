@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@mui/material";
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import axios from "axios";
 import FileBase from "react-file-base64";
 import {
@@ -21,6 +22,7 @@ const Form = () => {
   const [shopImage, setShopImage] = useState("");
   const [shopRating, setShopRating] = useState("");
   const [loading, setLoading] = useState(false);
+  const [shopId, setShopId] = useState("");
 
   const [shopData, setShopData] = useState([]);
 
@@ -33,21 +35,56 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newShop = {
-      shopName,
-      shopAddress,
-      description,
-      shopImage,
-      shopRating,
-    };
-    const result = axios
-      .post("http://localhost:5000/shopdetails", newShop)
-      .then((res) => {
+    // const newShop = {
+    //   shopName,
+    //   shopAddress,
+    //   description,
+    //   shopImage,
+    //   shopRating,
+    // };
+    // const result = axios
+    //   .post("http://localhost:5000/shopdetails", newShop)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setShopData([...shopData, res.data]);
+    //     clear()
+    //   })
+    //   .catch((err) => console.log(err));
+    if(shopId){
+      axios.put(`http://localhost:5000/shopdetails/${shopId}`, {
+        shopName,
+        shopAddress,
+        description,
+        shopRating,
+        shopImage,
+
+      }).then((res) => {
+        console.log(res.data);
+        if(res.data.nModified === 1){
+          setShopData(shopData.map(item => item._id === shopId ? setShopData([...shopData,...res.data]) : item))
+          setShopId("")
+
+          
+        }
+
+        clear()
+      })
+      .catch((err) => console.log(err));
+    }else{
+      axios.post("http://localhost:5000/shopdetails", {
+        shopName,
+        shopAddress,
+        description,
+        shopRating,
+        shopImage,
+
+      }).then((res) => {
         console.log(res.data);
         setShopData([...shopData, res.data]);
         clear()
       })
       .catch((err) => console.log(err));
+    }
   };
 
   const clear = () => {
@@ -75,12 +112,7 @@ const Form = () => {
     setDescription(shop.description);
     setShopImage(shop.shopImage);
     setShopRating(shop.shopRating);
-    setLoading(true);
-    axios.put(`http://localhost:5000/shopdetails/${id}`, shop).then((res) => {
-      console.log(res.data);
-      setLoading(false);
-      setShopData(shopData.filter((shop) => shop._id !== id));
-    });
+    setShopId(id);
 
   }
   return (
@@ -124,11 +156,11 @@ const Form = () => {
         {shopData.map((shop) => (
           <Grid item xs={12} sm={6} md={4}>
             <CardContent>
-              <CardMedia
+              <a href="www.google.com"><CardMedia
                 style={{ height: 0, paddingTop: "56.25%" }}
                 image={shop.shopImage}
                 title={shop.shopName}
-              />
+              /></a>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {shop.shopName}
@@ -138,12 +170,7 @@ const Form = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary">
-                  Share
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
+              
                 <Button
                   onClick={() => handleDelete(shop._id)}
                   size="small"
@@ -151,6 +178,14 @@ const Form = () => {
                 >
                   <DeleteIcon />
                 </Button>
+                <Button
+                  onClick={() => handleEdit(shop,shop._id)}
+                  size="small"
+                  color="primary"
+                >
+                  <MoreHorizIcon />
+                </Button>
+
               </CardActions>
             </CardContent>
           </Grid>
