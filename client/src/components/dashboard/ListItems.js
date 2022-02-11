@@ -15,7 +15,7 @@ import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
 
 export const mainListItems = (
   <div>
-    <ListItem button component={Link} to='/'>
+    <ListItem button component={Link} to='/events'>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -39,7 +39,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Shops" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to='details'>
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>

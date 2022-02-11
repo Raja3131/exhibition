@@ -21,11 +21,14 @@ import { CSVLink, CSVDownload } from "react-csv";
 // import { getData } from "./../Redux/Action/EventAction/Action";
 import { Autocomplete } from '@mui/material';
 
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css'
+
 const filterOptions = createFilterOptions({
   stringify: (option) => option.name,
 });
 
-export default function Location() {
+const EventRegistration = () => {
   const Location_URL = "http://localhost:5000/locations";
   let curdate = new Date();
 
@@ -268,14 +271,7 @@ useEffect(async () => {
     onchangedistrict(item)
   };
 
-  const filterDataByDate = (item) => {
-  let filteredData =getData.filter(data => {
-    return data.startdate <= item && data.enddate >= item
-  })
-  setGetData(filteredData)
-  console.log(filteredData)
 
-  };
   const deletes = async (item) => {
     swal({
       title: "Are you sure?",
@@ -661,3 +657,4 @@ useEffect(async () => {
     </div>
   );
 }
+export default EventRegistration;

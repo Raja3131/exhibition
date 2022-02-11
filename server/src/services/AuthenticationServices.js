@@ -19,29 +19,27 @@ export const AuthenticationServices = {
       throw err;
     }
   },
-forgotPassword: async (email) => {
-  try {
-    const user = await User.findOne({ email: email });
-    return user;
-  } catch (err) {
-    throw err;
-  }
-
-    
-
-},
-  resetPassword: async (password) => {
-    const resetPasswordToken = crypto.createHash("sha256").update(password).digest("hex");
+  forgotPassword: async (email) => {
     try {
-      const user = await User.findOne({ resetPasswordToken: resetPasswordToken, resetPasswordExpire: { $gt: Date.now() } });
+      const user = await User.findOne({ email: email });
       return user;
     } catch (err) {
       throw err;
     }
-
-
-   
-
-  }
-
+  },
+  resetPassword: async (password) => {
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(password)
+      .digest("hex");
+    try {
+      const user = await User.findOne({
+        resetPasswordToken: resetPasswordToken,
+        resetPasswordExpire: { $gt: Date.now() },
+      });
+      return user;
+    } catch (err) {
+      throw err;
+    }
+  },
 };

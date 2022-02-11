@@ -27,6 +27,7 @@ const eventRegister = new mongoose.Schema({
       }
 })
 
+
 const EventRegister = mongoose.model('EventRegister', eventRegister)
 
 export default EventRegister

@@ -22,6 +22,8 @@ import { Link,Routes,Route } from 'react-router-dom';
 import EventRegister from './../../screens/eventRegister/EventRegister';
 import ShopRegistration from '../../screens/shops/ShopRegistration'
 import PromoterRegistration from '../../screens/promoters/PromotersRegistration';
+import ShopDetails from '../../screens/shopdetails/ShopMain';
+import Login from '../../screens/login/Login';
 
 
 
@@ -75,7 +77,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -154,9 +156,12 @@ function DashboardContent() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               <Routes>
-                  <Route exact path="/" element={<EventRegister/>} />
+                <Route path="/" element={<Login />} />
+                
+                  <Route exact path="/events" element={<EventRegister/>} />
                     <Route path="/shops" element={<ShopRegistration/>} />
                     <Route path="/promoters" element={<PromoterRegistration/>} />
+                    <Route path="/details" element={<ShopDetails/>} />
 
               </Routes>
            
