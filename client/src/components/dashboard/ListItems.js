@@ -13,6 +13,7 @@ import HailIcon from '@mui/icons-material/Hail';
 import StoreMallDirectoryIcon from '@mui/icons-material/StoreMallDirectory';
 
 
+
 export const mainListItems = (
   <div>
     <ListItem button component={Link} to='/events'>
@@ -45,6 +46,13 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Organization" />
     </ListItem>
+    <ListItem button component={Link} to='/charts'>
+      <ListItemIcon>
+        <BarChartIcon />
+      </ListItemIcon>
+      <ListItemText primary="Charts" />
+    </ListItem>
+
   </div>
 );
 

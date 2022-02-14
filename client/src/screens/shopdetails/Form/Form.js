@@ -31,7 +31,11 @@ const Form = () => {
       console.log(res.data);
       setShopData([...res.data]);
     });
-  }, [loading]);
+  }, []);
+
+
+        
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,14 +65,25 @@ const Form = () => {
       }).then((res) => {
         console.log(res.data);
         if(res.data.nModified === 1){
-          setShopData(shopData.map(item => item._id === shopId ? setShopData([...shopData,...res.data]) : item))
-          setShopId("")
-
+          setShopData([{
+            shopName,
+            shopAddress,
+            description,
+            shopRating,
+            shopImage,
+            
+          }]);
           
-        }
 
         clear()
+
+        }
+
+          
+        
+
       })
+
       .catch((err) => console.log(err));
     }else{
       axios.post("http://localhost:5000/shopdetails", {

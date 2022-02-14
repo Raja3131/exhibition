@@ -24,6 +24,7 @@ import ShopRegistration from '../../screens/shops/ShopRegistration'
 import PromoterRegistration from '../../screens/promoters/PromotersRegistration';
 import ShopDetails from '../../screens/shopdetails/ShopMain';
 import Login from '../../screens/login/Login';
+import Chart from './../../screens/charts/Chart';
 
 
 
@@ -162,6 +163,7 @@ function DashboardContent() {
                     <Route path="/shops" element={<ShopRegistration/>} />
                     <Route path="/promoters" element={<PromoterRegistration/>} />
                     <Route path="/details" element={<ShopDetails/>} />
+                    <Route path="/charts" element={<Chart/>} />
 
               </Routes>
            
