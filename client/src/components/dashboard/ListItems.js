@@ -52,6 +52,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Charts" />
     </ListItem>
+    <ListItem button component={Link} to='shops/:id'>
+      <ListItemIcon>
+        <AssignmentIcon />
+      </ListItemIcon>
+      <ListItemText primary="Reports" />
+    </ListItem>
 
   </div>
 );

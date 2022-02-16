@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { TextField, Button, Typography, Paper } from "@mui/material";
+import { TextField, Button, Typography,ButtonBase } from "@mui/material";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import axios from "axios";
 import FileBase from "react-file-base64";
@@ -14,8 +14,10 @@ import {
   CircularProgress,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   const [shopName, setShopName] = useState("");
   const [shopAddress, setShopAddress] = useState("");
   const [description, setDescription] = useState("");
@@ -130,6 +132,9 @@ const Form = () => {
     setShopId(id);
 
   }
+  const openShop = (shop) => {
+    navigate(`/details/${shop._id}`);
+  }
   return (
     <>
       <form>
@@ -171,17 +176,31 @@ const Form = () => {
         {shopData.map((shop) => (
           <Grid item xs={12} sm={6} md={4}>
             <CardContent>
-              <a href="www.google.com"><CardMedia
-                style={{ height: 0, paddingTop: "56.25%" }}
+             <ButtonBase
+              onClick={() => openShop(shop)} 
+             
+             >
+              <CardMedia
+                component="img"
+                alt="Shop Image"
+                height="200"
+                width="140"                
                 image={shop.shopImage}
-                title={shop.shopName}
-              /></a>
+                title="Shop Image"
+              />
+
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {shop.shopName}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {shop.description}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {shop.shopAddress}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {shop.shopRating}
                 </Typography>
               </CardContent>
               <CardActions>
@@ -202,6 +221,7 @@ const Form = () => {
                 </Button>
 
               </CardActions>
+              </ButtonBase>
             </CardContent>
           </Grid>
         ))}

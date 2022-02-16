@@ -23,7 +23,8 @@ const Chart = () => {
       pv: item.shopRating,
       amt: item.shopRating,
     }
-  })
+    }).reverse();
+  
   return (
       <>
       <h1>Charts</h1>

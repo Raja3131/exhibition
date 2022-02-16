@@ -20,11 +20,12 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems} from './ListItems';
 import { Link,Routes,Route } from 'react-router-dom';
 import EventRegister from './../../screens/eventRegister/EventRegister';
-import ShopRegistration from '../../screens/shops/ShopRegistration'
 import PromoterRegistration from '../../screens/promoters/PromotersRegistration';
+import ShopRegistration from '../../screens/shopsRegister/ShopRegistration'
 import ShopDetails from '../../screens/shopdetails/ShopMain';
 import Login from '../../screens/login/Login';
 import Chart from './../../screens/charts/Chart';
+import ParticularShop from '../../screens/shopdetails/Details/ShopDetails';
 
 
 
@@ -164,6 +165,8 @@ function DashboardContent() {
                     <Route path="/promoters" element={<PromoterRegistration/>} />
                     <Route path="/details" element={<ShopDetails/>} />
                     <Route path="/charts" element={<Chart/>} />
+                    <Route path ="/details/:id" element={<ParticularShop/>} />
+
 
               </Routes>
            
